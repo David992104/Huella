@@ -9,9 +9,27 @@
 }
 .botonesblanco{
 	-fx-text-fill: white;
-	-fx-font-size: 20px;
+	-fx-font-size: 15px;
+	-fx-background-image: url(img/gal.jpg);
+	-fx-background-size: 100%;
+	-fx-background-radius: 20px;
+	-fx-border-radius:81px 81px 81px 81px;
 }
 .botonnegro{
 	-fx-text-fill: black;
 	-fx-font-size: 20px;
+}
+.fondoblur{
+	-fx-background-image: url(img/blur.jpg);
+	-fx-background-size: 120%;
+	-fx-background-radius: 20px;
+	-fx-border-radius:20px;
+}
+.titulo{
+    -fx-text-fill: white;
+	-fx-font-size: 25px;
+}
+.texto{
+    -fx-text-fill: white;
+	-fx-font-size: 15px;
 }

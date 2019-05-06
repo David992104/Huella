@@ -1,4 +1,5 @@
 package com.tesji.huella.registro;
+
 import javax.swing.JOptionPane;
 
 import com.jfoenix.controls.JFXButton;
@@ -11,6 +12,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class RegistroController {
+
+    @FXML
+    private BorderPane idBorderpane;
 
     @FXML
     private JFXTextField txtNombre;
@@ -32,12 +36,13 @@ public class RegistroController {
 
     @FXML
     private JFXButton btnCancelar;
+
     @FXML
-    private BorderPane idBorderpane;
+    private JFXButton btnSelectImage;
 
     @FXML
     void btnBorrarOnAction(ActionEvent event) {
-		txtNombre.setText("");
+    	txtNombre.setText("");
     	txtApUno.setText("");
     	txtApDos.setText("");
     	txtMatricula.setText("");
@@ -65,6 +70,11 @@ public class RegistroController {
     	}catch(Exception e) {
     		System.out.println("No se pudo hacer el registro");
     	}
+    }
+
+    @FXML
+    void btnSelectImageOnAction(ActionEvent event) {
+
     }
 
 }
