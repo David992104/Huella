@@ -41,4 +41,8 @@ public class Conexion {
 	            JOptionPane.showMessageDialog(null, "Error al crear el objeto");
 	        }
 	    }
+	 
+	 public void crear() {
+		 
+	 }
 }
