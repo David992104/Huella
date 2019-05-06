@@ -43,7 +43,7 @@ public class LoginController {
 
     @FXML
     void btnSalirOnAction(ActionEvent event) {
-    	System.exit(0);
+ System.exit(0);
     }
 
 }

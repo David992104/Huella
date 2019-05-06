@@ -1,10 +1,15 @@
 package com.tesji.huella.registro;
-
+import com.tesji.huella.login.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.xml.internal.ws.Closeable;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class RegistroController {
 
@@ -28,10 +33,12 @@ public class RegistroController {
 
     @FXML
     private JFXButton btnCancelar;
+    @FXML
+    private BorderPane idBorderpane;
 
     @FXML
     void btnBorrarOnAction(ActionEvent event) {
-    	txtNombre.setText("");
+		txtNombre.setText("");
     	txtApUno.setText("");
     	txtApDos.setText("");
     	txtMatricula.setText("");
@@ -39,7 +46,8 @@ public class RegistroController {
 
     @FXML
     void btnCancelarOnAction(ActionEvent event) {
-    	System.exit(0);
+    	Stage stage =(Stage) btnCancelar.getScene().getWindow();
+    	stage.close();
     }
 
     @FXML
