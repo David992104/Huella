@@ -1,6 +1,9 @@
 package com.tesji.huella.login;
 
+import java.sql.SQLException;
+
 import com.jfoenix.controls.JFXButton;
+import com.tesji.huella.conexion.Conexion;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -42,8 +45,10 @@ public class LoginController {
     }
 
     @FXML
-    void btnSalirOnAction(ActionEvent event) {
- System.exit(0);
+    void btnSalirOnAction(ActionEvent event) throws SQLException {
+    	System.exit(0);
+    	Conexion con = new Conexion();
+    	con.cerrar();
     }
 
 }
