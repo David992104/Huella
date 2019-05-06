@@ -1,5 +1,7 @@
 package com.tesji.huella;
 	
+import com.tesji.huella.conexion.Conexion;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -18,6 +20,8 @@ public class Main extends Application {
 			stage.setTitle("Inicio 3041");
 			stage.show();
 			stage.centerOnScreen();
+			Conexion con = new Conexion();
+			con.PrepararBaseDatos();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
