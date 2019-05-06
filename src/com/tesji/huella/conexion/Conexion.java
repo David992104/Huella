@@ -1,15 +1,11 @@
 package com.tesji.huella.conexion;
 
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.swing.JOptionPane;
-
-
 
 public class Conexion {
 	
@@ -41,6 +37,10 @@ public class Conexion {
 	            JOptionPane.showMessageDialog(null, "Error al crear el objeto");
 	        }
 	    }
+	 
+	 public void cerrar() {
+		 
+	 }
 	 
 	 public void crear() {
 		 
