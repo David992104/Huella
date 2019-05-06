@@ -14,7 +14,7 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tesji/huella/login/LoginView.fxml"));
 			BorderPane root1 = loader.load();
 			Stage stage = new Stage();
-			stage.setScene(new Scene(root1, 400, 400));
+			stage.setScene(new Scene(root1, 645, 400));
 			stage.setTitle("Inicio 3041");
 			stage.show();
 			stage.centerOnScreen();

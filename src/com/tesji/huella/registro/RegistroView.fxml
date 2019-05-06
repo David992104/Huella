@@ -1,6 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tesji.huella.registro.RegistroController" />
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tesji.huella.registro.RegistroController">
+   <top>
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="121.0" prefWidth="576.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="119.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Logo_tesji.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label prefHeight="34.0" prefWidth="158.0" text="Registro de Datos">
+               <HBox.margin>
+                  <Insets left="50.0" right="50.0" />
+               </HBox.margin>
+            </Label>
+            <ImageView fitHeight="107.0" fitWidth="243.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/unnamed.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="194.0" prefWidth="255.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <JFXTextField fx:id="txtNombre" alignment="CENTER" focusColor="WHITE" labelFloat="true" promptText="Nombre:" styleClass="textoblanco" stylesheets="@../application.css" unFocusColor="#188916">
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+               <effect>
+                  <ColorAdjust brightness="0.44" contrast="1.0" />
+               </effect>
+            </JFXTextField>
+            <JFXTextField fx:id="txtApUno" alignment="CENTER" focusColor="WHITE" labelFloat="true" promptText="Apellido Uno:" styleClass="textoblanco" stylesheets="@../application.css" unFocusColor="#188916">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <effect>
+                  <ColorAdjust brightness="0.44" contrast="1.0" hue="0.22" saturation="-0.2" />
+               </effect>
+            </JFXTextField>
+            <JFXTextField fx:id="txtApDos" alignment="CENTER" focusColor="WHITE" labelFloat="true" promptText="Apellido Dos:" styleClass="textoblanco" stylesheets="@../application.css" unFocusColor="#188916">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <effect>
+                  <ColorAdjust brightness="0.44" contrast="1.0" hue="0.22" saturation="-0.2" />
+               </effect>
+            </JFXTextField>
+            <JFXTextField fx:id="txtMatricula" alignment="CENTER" focusColor="WHITE" labelFloat="true" promptText="Matricula:" styleClass="textoblanco" stylesheets="@../application.css" unFocusColor="#188916">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <effect>
+                  <ColorAdjust brightness="0.44" contrast="1.0" hue="0.22" saturation="-0.2" />
+               </effect>
+            </JFXTextField>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="528.0" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="btnBorrar" alignment="BOTTOM_CENTER" onAction="#btnBorrarOnAction" styleClass="botonesblanco" stylesheets="@../application.css" text="Borrar">
+               <HBox.margin>
+                  <Insets left="30.0" right="60.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnGuardar" alignment="BOTTOM_CENTER" onAction="#btnGuardarOnAction" styleClass="botonesblanco" stylesheets="@../application.css" text="Guardar">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btnCancelar" alignment="BOTTOM_CENTER" onAction="#btnCancelarOnAction" styleClass="botonesblanco" stylesheets="@../application.css" text="Cancelar">
+               <HBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </HBox.margin>
+            </JFXButton>
+         </children>
+      </HBox>
+   </bottom>
+   <left>
+      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="179.0" prefWidth="256.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label styleClass="textoblanco" stylesheets="@../application.css" text="Ingresa una imagen:" />
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

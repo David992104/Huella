@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class LoginController {
@@ -28,7 +27,7 @@ public class LoginController {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tesji/huella/registro/RegistroView.fxml"));
 			BorderPane root1 = loader.load();
 			Stage stage = new Stage();
-			stage.setScene(new Scene(root1, 400, 400));
+			stage.setScene(new Scene(root1, 645, 400));
 			stage.setTitle("Nuevo usuario 3041");
 			stage.show();
 			stage.centerOnScreen();

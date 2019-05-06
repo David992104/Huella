@@ -1,1 +1,17 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+.fondo{
+	-fx-background-image: url(img/fondo.jpg);
+	-fx-background-size:100%;
+}
+.textoblanco{
+	-fx-text-fill: #188916;
+	-fx-font-size: 15px;
+}
+.botonesblanco{
+	-fx-text-fill: white;
+	-fx-font-size: 20px;
+}
+.botonnegro{
+	-fx-text-fill: black;
+	-fx-font-size: 20px;
+}
