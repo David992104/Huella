@@ -1,10 +1,16 @@
 package com.tesji.huella.conexion;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.swing.JOptionPane;
 
 public class Conexion {
 
@@ -16,9 +22,12 @@ public class Conexion {
 		try {
 			String contador = "com.mysql.cj.jdbc.Driver";
 			Class.forName(contador).newInstance();
-			conex = true;
-			conex = conectar();
-			conex = sentencia();
+			if (conectar()) {
+				if (sentencia())
+					conex = true;
+			} else {
+				conex = false;
+			}
 		} catch (Exception e) {
 			conex = false;
 		}
@@ -31,9 +40,21 @@ public class Conexion {
 			String user = "davidoso";
 			String pasword = "qazplm10";
 			conexion = DriverManager.getConnection(DSN, user, pasword);
-			System.out.println("Conectado");
 			return true;
 		} catch (Exception e) {
+			return conectarLocal();
+		}
+	}
+
+	public boolean conectarLocal() {
+		try {
+			String DNS = "";
+			String user = "";
+			String pass = "";
+			conexion = DriverManager.getConnection(DNS, user, pass);
+			return true;
+		} catch (Exception e) {
+			System.out.println("Problema al cargar");
 			return false;
 		}
 	}
@@ -41,7 +62,6 @@ public class Conexion {
 	public boolean sentencia() {
 		try {
 			sentencia = conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			System.out.println("Sentencia creada");
 			return true;
 		} catch (Exception e) {
 			System.out.println("No creada la sentencia");
@@ -49,21 +69,47 @@ public class Conexion {
 		}
 	}
 
-	public void crear(String nombre, String ape1, String ape2, String matricula) {
+	public void crear(String nombre, String ape1, String ape2, String matricula, File file) throws IOException {
+		conectar();
+		sentencia();
+		String consulta = "insert into usuario (idUsuario, nombre, apellido1, apellido2, matricula, fotografia) values (?, ?, ?, ?, ?, ?)";
+		
+		FileInputStream fis = new FileInputStream(file);
+		try {
+			PreparedStatement ps = conexion.prepareStatement(consulta);
+			conexion.setAutoCommit(false);
+			ps.setString(1, null);
+			ps.setString(2, nombre);
+			ps.setString(3, ape1);
+			ps.setString(4, ape2);
+			ps.setString(5, matricula);
+			ps.setBinaryStream(6, fis, (int)file.length());
+			ps.executeUpdate();
+			conexion.commit();
+			JOptionPane.showMessageDialog(null, "Registro Exitoso " + nombre);
+			fis.close();
+			ps.close();
+		} catch (SQLException e) {
+			System.out.println("No se pudo guardar");
+			e.printStackTrace();
+		}
+
+	}
+
+	public void consulta(int idUser) {
 		String consulta = "";
 		try {
-			consulta = "INSERT INTO usuario VALUES (";
-			consulta += "NULL,";
-			consulta += "'" + nombre + "',";
-			consulta += "'" + ape1 + "',";
-			consulta += "'" + ape2 + "',";
-			consulta += "'" + matricula + "',";
-			consulta += "NULL);";
-			System.out.println(consulta);
-			sentencia.executeUpdate(consulta);
+			consulta = "select * from usuario where id=" + idUser + ";";
+			
+			sentencia.executeQuery(consulta);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void consultaId() {
+		
+
 	}
 
 	public void cerrar() throws SQLException {

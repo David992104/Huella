@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="idBorderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="704.0" styleClass="fondo" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tesji.huella.registro.RegistroController">
+<BorderPane fx:id="idBorderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="704.0" styleClass="fondo" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tesji.huella.registro.RegistroController">
    <top>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="121.0" prefWidth="712.0" BorderPane.alignment="CENTER">
          <children>
@@ -105,6 +105,11 @@
    <left>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="237.0" prefWidth="204.0" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fx:id="imgPerfil" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </ImageView>
             <Label styleClass="fondoblur" stylesheets="@../application.css" text="Ingresa una imagen:" textFill="WHITE" />
             <JFXButton fx:id="btnSelectImage" onAction="#btnSelectImageOnAction" styleClass="botonesblanco" stylesheets="@../application.css" text="Seleccionar imagen" />
          </children>

@@ -13,19 +13,25 @@ import javafx.scene.layout.BorderPane;
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
+		byte resp;
 		try {
 			Conexion con = new Conexion();
-			if (con.prepararBaseDatos()) {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tesji/huella/login/LoginView.fxml"));
-				BorderPane root1 = loader.load();
-				Stage stage = new Stage();
-				stage.setScene(new Scene(root1, 645, 400));
-				stage.setTitle("Inicio 3041");
-				stage.show();
-				stage.centerOnScreen();
-			} else {
-				JOptionPane.showMessageDialog(null, "No tienes conexion a internet");
-			}
+			do {
+				resp = 1;
+				if (con.prepararBaseDatos()) {
+					FXMLLoader loader = new FXMLLoader(
+							getClass().getResource("/com/tesji/huella/login/LoginView.fxml"));
+					BorderPane root1 = loader.load();
+					Stage stage = new Stage();
+					stage.setScene(new Scene(root1, 645, 400));
+					stage.setTitle("Inicio 3041");
+					stage.centerOnScreen();
+					stage.show();
+				} else {
+					JOptionPane.showMessageDialog(null, "No tienes conexion a internet");
+					resp = (byte) JOptionPane.showConfirmDialog(null, "Reintentar ?");
+				}
+			} while (resp == 0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
