@@ -36,12 +36,14 @@ public class Conexion {
 
 	public boolean conectar() {
 		try {
+			//Conexion a BD online
 			String DSN = "jdbc:mysql://db4free.net:3306/huella";
 			String user = "davidoso";
 			String pasword = "qazplm10";
 			conexion = DriverManager.getConnection(DSN, user, pasword);
 			return true;
 		} catch (Exception e) {
+			//Si no funciona online se conectara a una DB local
 			return conectarLocal();
 		}
 	}
