@@ -101,7 +101,7 @@ public class Conexion {
 	public void consulta(int idUser) {
 		String consulta = "";
 		try {
-			consulta = "select * from usuario where id=" + idUser + ";";
+			consulta = "select  from usuario where id=" + idUser + ";";
 			
 			sentencia.executeQuery(consulta);
 		} catch (SQLException e) {
@@ -109,9 +109,20 @@ public class Conexion {
 		}
 	}
 
-	public void consultaId() {
-		
-
+	public String consultaId() {
+		conectar();
+		sentencia();
+		String id = "0";
+		String consulta = "select idUsuario from usuario order by idUsuario asc";
+		try {
+			ResultSet rs = (ResultSet) sentencia.executeQuery(consulta);
+			while(rs.next()){
+				id = rs.getString("idUsuario");
+			}
+		} catch (SQLException e) {
+			System.err.println("no se hace la consulta");
+		}
+		return id;
 	}
 
 	public void cerrar() throws SQLException {

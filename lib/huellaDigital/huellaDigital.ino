@@ -13,7 +13,14 @@ void setup() {
   while (!Serial);
   delay(100);
   finger.begin(57600);
-
+if (finger.verifyPassword()) {
+    Serial.println("Found fingerprint sensor!");
+  } else {
+    Serial.println("Did not find fingerprint sensor :(");
+    while (1) {
+      delay(1);
+    }
+  }
   servo1.attach(5, 600, 1500);
 }
 
@@ -23,7 +30,8 @@ uint8_t readnumber(void) {
 //Serial.println("Esperando opc");
   while (num == 0) {
     while (! Serial.available());
-    num = Serial.read();
+    num = Serial.parseInt();
+    //num = Serial.read();
   }
   return num;
 }
@@ -34,7 +42,8 @@ void loop() {
     if (input == 1){
         while(getFingerprintIDez() == -1);
         servoOpen();
-        delay(500);
+        delay(5000);
+        servoClose();
         input = 0;
     }
     if (input == 2) {
@@ -50,7 +59,7 @@ void loop() {
 }
 
 void servoOpen(){
-   servo1.write(75);
+   servo1.write(90);
    delay(700);
     Serial.println("Servo abierto");
 }
