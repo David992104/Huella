@@ -23,7 +23,7 @@ public class LoginController {
     
     @FXML
     private Button btn;
-
+    
     @FXML
     void btnNuevoOnAction(ActionEvent event) {
     	try {

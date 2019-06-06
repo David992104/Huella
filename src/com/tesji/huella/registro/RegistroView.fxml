@@ -120,7 +120,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="213.0">
                <children>
-                  <ImageView fitHeight="241.0" fitWidth="177.0" layoutX="13.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgHuella" fitHeight="241.0" fitWidth="177.0" layoutX="13.0" layoutY="36.0" onMouseClicked="#imgHuellaOnmouseClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/huella.jpg" />
                      </image>
@@ -128,6 +128,7 @@
                   <Label layoutX="7.0" layoutY="20.0" prefHeight="16.0" prefWidth="184.0" styleClass="fondoblur" text="Coloca tu huella compañero" textFill="WHITE" />
                </children>
             </AnchorPane>
+            <JFXButton fx:id="btnRegistro" onAction="#btnRegistroOnAction" styleClass="botonesblanco" />
          </children>
       </VBox>
    </right>
