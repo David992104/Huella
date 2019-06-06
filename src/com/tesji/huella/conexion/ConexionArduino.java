@@ -33,7 +33,7 @@ public class ConexionArduino {
 
 	public ConexionArduino() {	
 		try {
-			ino.arduinoRXTX("/dev/ttyACM1", 9600, listener);
+			ino.arduinoRXTX("/dev/ttyACM0", 9600, listener);
 		} catch (ArduinoException e) {
 			System.out.println("Uno dos \n" + e);
 		}
