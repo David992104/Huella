@@ -1,35 +1,39 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 .fondo{
-	-fx-background-image: url(img/fondo.jpg);
+	-fx-background-image: url(img/fondo9.JPG);
 	-fx-background-size:100%;
 }
-.textoblanco{
-	-fx-text-fill: #188916;
-	-fx-font-size: 15px;
-}
-.botonesblanco{
-	-fx-text-fill: white;
-	-fx-font-size: 15px;
-	-fx-background-image: url(img/gal.jpg);
-	-fx-background-size: 100%;
-	-fx-background-radius: 20px;
-	-fx-border-radius:81px 81px 81px 81px;
-}
-.botonnegro{
-	-fx-text-fill: black;
-	-fx-font-size: 20px;
-}
 .fondoblur{
-	-fx-background-image: url(img/blur.jpg);
+	-fx-background-image: url(img/fonfoletras.JPG);
 	-fx-background-size: 120%;
 	-fx-background-radius: 20px;
 	-fx-border-radius:20px;
 }
-.titulo{
-    -fx-text-fill: white;
-	-fx-font-size: 25px;
+
+.fondobonis{
+	-fx-background-image:url(img/2909.JPG);
+	-fx-background-size:100%;
 }
-.texto{
-    -fx-text-fill: white;
-	-fx-font-size: 15px;
+.fondochido{
+	-fx-background-image: url(img/datos.JPG);
+}
+
+
+.colorle{
+	-fx-text-inner-color: black;
+	-fx-font-weight:bold;
+}
+.tituloboni{
+	-fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );
+    -fx-background-radius: 5;
+    -fx-padding: 10;
+}
+.botones{
+    -fx-background-color:transparent ;
+    -fx-background-radius:3;
+    -fx-border-color:black;
+    -fx-border-width: 2 2 2 2;
+    -fx-effect: dropshadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0 );
+    -fx-background-radius: 5;
+    -fx-padding: 10;
 }
