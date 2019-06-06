@@ -13,7 +13,14 @@ void setup() {
   while (!Serial);
   delay(100);
   finger.begin(57600);
-
+if (finger.verifyPassword()) {
+    Serial.println("Found fingerprint sensor!");
+  } else {
+    Serial.println("Did not find fingerprint sensor :(");
+    while (1) {
+      delay(1);
+    }
+  }
   servo1.attach(5, 600, 1500);
 }
 
