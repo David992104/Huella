@@ -22,7 +22,7 @@ public class Conexion {
 		try {
 			String contador = "com.mysql.cj.jdbc.Driver";
 			Class.forName(contador).newInstance();
-			if (conectar()) {
+			if (conectar() || conectarLocal()) {
 				if (sentencia())
 					conex = true;
 			} else {
@@ -50,8 +50,9 @@ public class Conexion {
 
 	public boolean conectarLocal() {
 		try {
-			String DNS = "";
-			String user = "";
+			System.out.println("Conexion local");
+			String DNS = "jdbc:mysql://http://localhost/phpmyadmin/db_structure.php?server=1&db=huella";
+			String user = "root";
 			String pass = "";
 			conexion = DriverManager.getConnection(DNS, user, pass);
 			return true;
