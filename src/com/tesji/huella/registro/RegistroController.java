@@ -64,6 +64,7 @@ public class RegistroController {
 					txtMatricula.getText().trim(), registroM.convertir());
 			Stage stage = (Stage) btnGuardar.getScene().getWindow();
 			stage.close();
+			
 		} catch (Exception e) {
 			System.out.println("No se pudo hacer el registro");
 		}
