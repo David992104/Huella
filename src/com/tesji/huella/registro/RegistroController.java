@@ -42,7 +42,7 @@ public class RegistroController {
 	private JFXButton btnRegistro;
 	
 	RegistroModel registroM = new RegistroModel();
-	ConexionArduino con = new ConexionArduino("poc");
+	
 
 	@FXML
 	void btnBorrarOnAction(ActionEvent event) {
@@ -73,15 +73,15 @@ public class RegistroController {
 								Stage stage = (Stage) btnGuardar.getScene().getWindow();
 								stage.close();
 							}else 
-								JOptionPane.showMessageDialog(null, "Coloca una matricula menor igual de 10 digitos", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Coloca una matricula menor igual de 10 digitos", "Matricula", JOptionPane.ERROR_MESSAGE);
 						}else 
-							JOptionPane.showMessageDialog(null, "Coloca una matricula menor igual de 10 digitos", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Coloca una matricula menor igual de 10 digitos", "Matricula", JOptionPane.ERROR_MESSAGE);
 					}else 
-						JOptionPane.showMessageDialog(null, "Solo admite letras", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Solo admite letras", "Apellido 2", JOptionPane.ERROR_MESSAGE);
 				}else 
-					JOptionPane.showMessageDialog(null, "Solo admite letras", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Solo admite letras", "Apellido 1", JOptionPane.ERROR_MESSAGE);
 			}else 
-				JOptionPane.showMessageDialog(null, "Solo admite letras", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Solo admite letras", "Nombre", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception e) {
 			System.out.println("No se pudo hacer el registro");
 		}
@@ -89,13 +89,9 @@ public class RegistroController {
 	
 	  @FXML
 	    void btnRegistroOnAction(ActionEvent event) {
+		  ConexionArduino con = new ConexionArduino();
 			con.registroHuella();
 	  
-			System.out.println(con.getIDhuella());
-			
-			while(!(con.getIDhuella() > 0 && con.getIDhuella() < 128));
-			
-			System.out.println(con.getIDhuella());
 	    }
 	
 	@FXML
