@@ -1,5 +1,7 @@
 package com.tesji.huella.registro;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.tesji.huella.conexion.Conexion;
@@ -59,10 +61,31 @@ public class RegistroController {
 	void btnGuardarOnAction(ActionEvent event) {
 		try {
 			Conexion crear = new Conexion();
-			crear.crear(txtNombre.getText().trim(), txtApUno.getText(), txtApDos.getText().trim(),
-					txtMatricula.getText().trim(), registroM.convertir());
-			Stage stage = (Stage) btnGuardar.getScene().getWindow();
-			stage.close();
+			if (txtNombre.getText().trim().length()!=0) {
+				if (txtApUno.getText().trim().length()!=0) {
+					if (txtApDos.getText().trim().length()!=0) {
+						if (txtMatricula.getText().trim().length()!=0) {
+							if (txtMatricula.getText().trim().length()<=10) {
+								crear.crear(txtNombre.getText().trim(), txtApUno.getText().trim(), txtApDos.getText().trim(),
+										txtMatricula.getText().trim(), registroM.convertir());
+								Stage stage = (Stage) btnGuardar.getScene().getWindow();
+								stage.close();
+							}else {
+								JOptionPane.showMessageDialog(null, "Coloca una matricula menor igual de 10 digitos", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+							}
+						}else {
+							JOptionPane.showMessageDialog(null, "Coloca una matricula menor igual de 10 digitos", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+						}
+					}else {
+						JOptionPane.showMessageDialog(null, "Solo admite letras", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Solo admite letras", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "Solo admite letras", "Error en matricula", JOptionPane.ERROR_MESSAGE);
+			}
+						
 		} catch (Exception e) {
 			System.out.println("No se pudo hacer el registro");
 		}
