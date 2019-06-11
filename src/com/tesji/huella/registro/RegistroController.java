@@ -37,7 +37,7 @@ public class RegistroController {
 	private ImageView imgHuella;
 	@FXML
 	private JFXButton btnRegistro;
-	
+
 	RegistroModel registroM = new RegistroModel();
 	ConexionArduino con = new ConexionArduino();
 
@@ -53,6 +53,7 @@ public class RegistroController {
 	void btnCancelarOnAction(ActionEvent event) {
 		Stage stage = (Stage) btnCancelar.getScene().getWindow();
 		stage.close();
+		
 	}
 
 	@FXML
@@ -67,15 +68,15 @@ public class RegistroController {
 			System.out.println("No se pudo hacer el registro");
 		}
 	}
-	
-	  @FXML
-	    void btnRegistroOnAction(ActionEvent event) {
-			con.registroHuella();
-	    }
-	
+
+	@FXML
+	void btnRegistroOnAction(ActionEvent event) {
+		con.registroHuella();
+	}
+
 	@FXML
 	void imgHuellaOnmouseClicked(ActionEvent event) {
-		
+
 	}
 
 	@FXML

@@ -30,8 +30,8 @@ uint8_t readnumber(void) {
 //Serial.println("Esperando opc");
   while (num == 0) {
     while (! Serial.available());
-    num = Serial.parseInt();
-    //num = Serial.read();
+    //num = Serial.parseInt();
+    num = Serial.read();
   }
   return num;
 }
@@ -59,12 +59,12 @@ void loop() {
 }
 
 void servoOpen(){
-   servo1.write(90);
+   servo1.write(160);
    delay(700);
     Serial.println("Servo abierto");
 }
 void servoClose(){
-  servo1.write(0);
+  servo1.write(10);
   delay(70);
    Serial.println("Servo cerrado");
 }

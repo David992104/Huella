@@ -26,7 +26,7 @@ public class ConexionArduino {
 					}
 				}
 			} catch (SerialPortException | ArduinoException ex) {
-				System.out.println("Eroro uno \n " + ex);
+				System.out.println("Error conexion con arduino " + ex);
 			}
 		}
 	};

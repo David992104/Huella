@@ -102,7 +102,7 @@ public class Conexion {
 	public void consulta(int idUser) {
 		String consulta = "";
 		try {
-			consulta = "select  from usuario where id=" + idUser + ";";
+			consulta = "select * from usuario where id=" + idUser + ";";
 			
 			sentencia.executeQuery(consulta);
 		} catch (SQLException e) {
