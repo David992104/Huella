@@ -3,6 +3,7 @@ package com.tesji.huella;
 import javax.swing.JOptionPane;
 
 import com.tesji.huella.conexion.Conexion;
+import com.tesji.huella.conexion.ConexionArduino;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,7 +17,7 @@ public class Main extends Application {
 		byte resp;
 		try {
 			Conexion con = new Conexion();
-			
+			 //new ConexionArduino();
 			do {
 				resp = 1;
 				if (con.prepararBaseDatos()) {
@@ -28,6 +29,7 @@ public class Main extends Application {
 					stage.setTitle("Inicio 3041");
 					stage.centerOnScreen();
 					stage.show();
+					
 				} else {
 					JOptionPane.showMessageDialog(null, "No tienes conexion a internet");
 					resp = (byte) JOptionPane.showConfirmDialog(null, "Reintentar ?");

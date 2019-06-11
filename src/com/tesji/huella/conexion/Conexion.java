@@ -99,15 +99,17 @@ public class Conexion {
 
 	}
 
-	public void consulta(int idUser) {
+	public ResultSet consulta(int idUser) {
 		String consulta = "";
+		ResultSet usuario = null;
 		try {
-			consulta = "select  from usuario where id=" + idUser + ";";
-			
-			sentencia.executeQuery(consulta);
+			consulta = "select * from usuario where id=" + idUser + ";";
+			usuario = sentencia.executeQuery(consulta);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return usuario;
+		
 	}
 
 	public String consultaId() {

@@ -21,6 +21,7 @@ public class ConexionArduino {
 					mensaje = ino.printMessage();
 					if (mensaje.toString().trim().length() <= 3 ) {
 						IDhuella = Integer.parseInt(mensaje.toString().trim());
+						System.out.println(IDhuella);
 					}else {
 						System.out.println(mensaje);
 					}
@@ -34,6 +35,23 @@ public class ConexionArduino {
 	public ConexionArduino() {	
 		try {
 			ino.arduinoRXTX("/dev/ttyACM0", 9600, listener);
+		} catch (ArduinoException e) {
+			System.out.println("Uno dos \n" + e);
+		}
+	}
+	
+	public void CerrarConexion() {
+		try {
+			ino.arduinoRXTX(null, 0, listener);
+		} catch (ArduinoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public ConexionArduino(String opc) {
+		try {
+			ino.arduinoRXTX("/dev/ttyACM1", 9600, listener);
 		} catch (ArduinoException e) {
 			System.out.println("Uno dos \n" + e);
 		}
@@ -55,11 +73,12 @@ public class ConexionArduino {
 		}
 	}
 	
-	public void elejirAccionArduino(String opcion, String id) throws ArduinoException, SerialPortException {
-			ino.sendData(opcion);
-			if (opcion == "2") {
-				ino.sendData(id);
-			}
+	public void busqueda(int opc) {
+		try {
+			ino.sendByte(opc);
+		} catch (ArduinoException | SerialPortException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public String getId() {

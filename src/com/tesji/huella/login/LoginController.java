@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import com.jfoenix.controls.JFXButton;
 import com.tesji.huella.conexion.Conexion;
+import com.tesji.huella.conexion.ConexionArduino;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,6 +25,8 @@ public class LoginController {
     @FXML
     private Button btn;
     
+    ConexionArduino con = new ConexionArduino();
+    
     @FXML
     void btnNuevoOnAction(ActionEvent event) {
     	try {
@@ -34,6 +37,8 @@ public class LoginController {
 			stage.setTitle("Nuevo usuario 3041");
 			stage.show();
 			stage.centerOnScreen();
+			
+			con.CerrarConexion();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -41,7 +46,14 @@ public class LoginController {
     
     @FXML
     void btnOnAction(ActionEvent event) {
-    	
+    	con.busqueda(1);
+    	/*int id;
+    	System.out.println(con.getIDhuella());
+    	if (con.getIDhuella() > 0 && con.getIDhuella() < 128) {
+    		id = con.getIDhuella();
+    		
+    		System.out.println(con.getIDhuella());
+    	}*/
     }
 
     @FXML

@@ -1,6 +1,7 @@
 package com.tesji.huella.registro;
 
 import com.jfoenix.controls.JFXButton;
+
 import com.jfoenix.controls.JFXTextField;
 import com.tesji.huella.conexion.Conexion;
 import com.tesji.huella.conexion.ConexionArduino;
@@ -39,7 +40,7 @@ public class RegistroController {
 	private JFXButton btnRegistro;
 	
 	RegistroModel registroM = new RegistroModel();
-	ConexionArduino con = new ConexionArduino();
+	ConexionArduino con = new ConexionArduino("poc");
 
 	@FXML
 	void btnBorrarOnAction(ActionEvent event) {
@@ -71,6 +72,12 @@ public class RegistroController {
 	  @FXML
 	    void btnRegistroOnAction(ActionEvent event) {
 			con.registroHuella();
+	  
+			System.out.println(con.getIDhuella());
+			
+			while(!(con.getIDhuella() > 0 && con.getIDhuella() < 128));
+			
+			System.out.println(con.getIDhuella());
 	    }
 	
 	@FXML
