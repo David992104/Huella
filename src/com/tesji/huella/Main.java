@@ -17,7 +17,6 @@ public class Main extends Application {
 		byte resp;
 		try {
 			Conexion con = new Conexion();
-			 //new ConexionArduino();
 			do {
 				resp = 1;
 				if (con.prepararBaseDatos()) {
@@ -29,7 +28,6 @@ public class Main extends Application {
 					stage.setTitle("Inicio 3041");
 					stage.centerOnScreen();
 					stage.show();
-					
 				} else {
 					JOptionPane.showMessageDialog(null, "No tienes conexion a internet");
 					resp = (byte) JOptionPane.showConfirmDialog(null, "Reintentar ?");
