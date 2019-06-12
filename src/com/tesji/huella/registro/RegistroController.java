@@ -1,5 +1,7 @@
 package com.tesji.huella.registro;
 
+import java.io.IOException;
+
 import javax.swing.JOptionPane;
 
 import com.jfoenix.controls.JFXButton;
@@ -10,6 +12,8 @@ import com.tesji.huella.conexion.ConexionArduino;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -42,7 +46,7 @@ public class RegistroController {
 	private JFXButton btnRegistro;
 	
 	RegistroModel registroM = new RegistroModel();
-	
+	 ConexionArduino con = new ConexionArduino();	
 
 	@FXML
 	void btnBorrarOnAction(ActionEvent event) {
@@ -53,9 +57,18 @@ public class RegistroController {
 	}
 
 	@FXML
-	void btnCancelarOnAction(ActionEvent event) {
-		Stage stage = (Stage) btnCancelar.getScene().getWindow();
-		stage.close();
+	void btnCancelarOnAction(ActionEvent event) throws IOException {
+		con.CerrarConexion();
+		Stage st = (Stage) btnCancelar.getScene().getWindow();
+		st.close();
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tesji/huella/login/LoginView.fxml"));
+		BorderPane root1 = loader.load();
+		Stage stage = new Stage();
+		stage.setScene(new Scene(root1, 704, 443));
+		stage.setTitle("Nuevo usuario 3041");
+		stage.show();
+		stage.centerOnScreen();
 	}
 
 	@FXML
@@ -72,6 +85,7 @@ public class RegistroController {
 										txtMatricula.getText().trim(), registroM.convertir());
 								Stage stage = (Stage) btnGuardar.getScene().getWindow();
 								stage.close();
+								con.CerrarConexion();
 							}else 
 								JOptionPane.showMessageDialog(null, "Coloca una matricula menor igual de 10 digitos", "Matricula", JOptionPane.ERROR_MESSAGE);
 						}else 
@@ -89,7 +103,7 @@ public class RegistroController {
 	
 	  @FXML
 	    void btnRegistroOnAction(ActionEvent event) {
-		  ConexionArduino con = new ConexionArduino();
+		 
 			con.registroHuella();
 	  
 	    }

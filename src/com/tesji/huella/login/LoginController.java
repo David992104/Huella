@@ -1,22 +1,22 @@
 package com.tesji.huella.login;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.tesji.huella.conexion.Conexion;
-import com.tesji.huella.conexion.ConexionArduino;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
 	@FXML
 	private JFXButton btnSalir;
@@ -27,11 +27,12 @@ public class LoginController {
 	@FXML
 	private Button btn;
 
-	ConexionArduino con = new ConexionArduino();
+	LoginModel lm = new LoginModel();
 
 	@FXML
 	void btnNuevoOnAction(ActionEvent event) {
 		try {
+			lm.cerrarCon();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tesji/huella/registro/RegistroView.fxml"));
 			BorderPane root1 = loader.load();
 			Stage stage = new Stage();
@@ -39,47 +40,36 @@ public class LoginController {
 			stage.setTitle("Nuevo usuario 3041");
 			stage.show();
 			stage.centerOnScreen();
-			con.CerrarConexion();
+			
+			Stage este = (Stage) btnNuevo.getScene().getWindow();
+			este.close();
+			lm.setPulso(false);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	
+	
 	@FXML
 	void btnOnAction(ActionEvent event) {
-		con.busqueda(1);
-		busqueda();
+		lm.busqueda();
 	}
-
-	void busqueda() {
-		boolean cona = true;
-		do {
-			 System.out.println(con.getIDhuella());
-			if (con.getIDhuella() != 0) {
-				cona = false;
-			}
-		} while (cona);
-		System.out.println(con.getIDhuella());
-		Conexion conu = new Conexion();
-		try {
-		ResultSet rs = conu.consulta(con.getIDhuella());
-		ResultSetMetaData rsmd = rs.getMetaData();
-		while(rs.next()) {
-			for (int i = 1; i <=rsmd.getColumnCount() - 1; i++) {
-				System.out.println(rs.getString(i));
-			}
-		}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
+	
 	@FXML
 	void btnSalirOnAction(ActionEvent event) throws SQLException {
 		System.exit(0);
 		Conexion con = new Conexion();
 		con.cerrar();
+		this.lm.cerrarCon();
+		
+	}
+
+
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//lm.busqueda();
 	}
 
 }

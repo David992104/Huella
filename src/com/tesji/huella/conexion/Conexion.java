@@ -52,7 +52,7 @@ public class Conexion {
 		try {
 			JOptionPane.showMessageDialog(null, "Conexion local"); 
 			//System.out.println("Conexion local");
-			String DNS = "jdbc:mysql://http://localhost:3306/phpmyadmin/db_structure.php?server=1&db=huella";
+			String DNS = "jdbc:mysql://localhost:3306/phpmyadmin/db_structure.php?server=1&db=huella";
 			String user = "root";
 			String pass = "";
 			conexion = DriverManager.getConnection(DNS, user, pass);

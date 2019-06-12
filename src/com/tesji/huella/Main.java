@@ -3,7 +3,6 @@ package com.tesji.huella;
 import javax.swing.JOptionPane;
 
 import com.tesji.huella.conexion.Conexion;
-import com.tesji.huella.conexion.ConexionArduino;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
