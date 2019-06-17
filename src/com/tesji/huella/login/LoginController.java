@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.tesji.huella.conexion.Conexion;
 
+import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,13 +18,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
-
 	@FXML
 	private JFXButton btnSalir;
-
 	@FXML
 	private JFXButton btnNuevo;
-
 	@FXML
 	private Button btn;
 
@@ -48,7 +46,7 @@ public class LoginController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
+	
 	
 	
 	@FXML
@@ -71,5 +69,7 @@ public class LoginController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		//lm.busqueda();
 	}
+
+
 
 }
