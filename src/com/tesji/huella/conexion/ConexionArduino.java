@@ -9,24 +9,29 @@ import jssc.SerialPortException;
 
 public class ConexionArduino {
 	private String id;
-	private String mensaje;
-	private int IDhuella;
+	private  String mensaje;
+	private  int IDhuella = 0;
 	
-	private PanamaHitek_Arduino ino = new PanamaHitek_Arduino();
-	private SerialPortEventListener listener = new SerialPortEventListener() {
+	private  PanamaHitek_Arduino ino = new PanamaHitek_Arduino();
+	private  SerialPortEventListener listener = new SerialPortEventListener() {
 		@Override
 		public void serialEvent(SerialPortEvent arg0) {
 			try {
 				if (ino.isMessageAvailable()) {
 					mensaje = ino.printMessage();
 					if (mensaje.toString().trim().length() <= 3 ) {
-						IDhuella = Integer.parseInt(mensaje.toString().trim());
+						setIDhuella(Integer.parseInt(mensaje.toString().trim()));
+						//System.out.println(getIDhuella());
 					}else {
 						System.out.println(mensaje);
 					}
 				}
 			} catch (SerialPortException | ArduinoException ex) {
+<<<<<<< HEAD
 				System.out.println("Error conexion con arduino " + ex);
+=======
+				System.out.println("Error uno \n " + ex);
+>>>>>>> 29f183f8dd6927e7e4b7f942100711ba9427877d
 			}
 		}
 	};
@@ -35,7 +40,16 @@ public class ConexionArduino {
 		try {
 			ino.arduinoRXTX("/dev/ttyACM0", 9600, listener);
 		} catch (ArduinoException e) {
-			System.out.println("Uno dos \n" + e);
+			System.out.println("Error Conexion" + e);
+		}
+	}
+	
+	public void CerrarConexion() {
+		try {
+			ino.killArduinoConnection();
+		} catch (ArduinoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -48,18 +62,20 @@ public class ConexionArduino {
 		try {
 			ino.sendByte(2);
 			//System.out.println("Date enviada id");
-			ino.sendByte(++id);
+			ino.sendByte(id);
 			System.out.println("Porfavor Coloca tu dedo indice");
 		} catch (ArduinoException | SerialPortException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void elejirAccionArduino(String opcion, String id) throws ArduinoException, SerialPortException {
-			ino.sendData(opcion);
-			if (opcion == "2") {
-				ino.sendData(id);
-			}
+	public void busqueda(int opc) {
+		try {
+			ino.sendByte(opc);
+		} catch (ArduinoException | SerialPortException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Salida busqueda ca");
 	}
 	
 	public String getId() {

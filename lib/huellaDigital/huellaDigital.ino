@@ -40,12 +40,15 @@ void loop() {
   if (Serial.available()) {
     int input = readnumber();
     if (input == 1){
+    
         while(getFingerprintIDez() == -1);
-        delay(5000);
+
+        delay(4000);
         servoOpen();
         delay(1000);
         servoClose();
         input = 0;
+        
     }
     if (input == 2) {
         id = readnumber();

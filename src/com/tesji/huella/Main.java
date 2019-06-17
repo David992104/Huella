@@ -16,7 +16,6 @@ public class Main extends Application {
 		byte resp;
 		try {
 			Conexion con = new Conexion();
-			
 			do {
 				resp = 1;
 				if (con.prepararBaseDatos()) {

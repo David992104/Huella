@@ -50,14 +50,16 @@ public class Conexion {
 
 	public boolean conectarLocal() {
 		try {
-			System.out.println("Conexion local");
-			String DNS = "jdbc:mysql://http://localhost/phpmyadmin/db_structure.php?server=1&db=huella";
+			JOptionPane.showMessageDialog(null, "Conexion local"); 
+			//System.out.println("Conexion local");
+			String DNS = "jdbc:mysql://localhost:3306/phpmyadmin/db_structure.php?server=1&db=huella";
 			String user = "root";
 			String pass = "";
 			conexion = DriverManager.getConnection(DNS, user, pass);
 			return true;
 		} catch (Exception e) {
-			System.out.println("Problema al cargar");
+			JOptionPane.showMessageDialog(null, "Problema al cargar");
+			//System.out.println("Problema al cargar");
 			return false;
 		}
 	}
@@ -67,7 +69,8 @@ public class Conexion {
 			sentencia = conexion.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			return true;
 		} catch (Exception e) {
-			System.out.println("No creada la sentencia");
+			JOptionPane.showMessageDialog(null, "No creada la sentecia");
+			//System.out.println("No creada la sentencia");
 			return false;
 		}
 	}
@@ -93,21 +96,32 @@ public class Conexion {
 			fis.close();
 			ps.close();
 		} catch (SQLException e) {
-			System.out.println("No se pudo guardar");
+			JOptionPane.showMessageDialog(null, "No se pudo guardar ");
+			//System.out.println("No se pudo guardar");
 			e.printStackTrace();
 		}
 
 	}
 
-	public void consulta(int idUser) {
+	public ResultSet consulta(int idUser) {
+		conectar();
+		sentencia();
 		String consulta = "";
+		ResultSet usuario = null;
 		try {
+<<<<<<< HEAD
 			consulta = "select * from usuario where id=" + idUser + ";";
 			
 			sentencia.executeQuery(consulta);
+=======
+			consulta = "select * from usuario where idUsuario=" + idUser + ";";
+			usuario = sentencia.executeQuery(consulta);
+>>>>>>> 29f183f8dd6927e7e4b7f942100711ba9427877d
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return usuario;
+		
 	}
 
 	public String consultaId() {
@@ -121,7 +135,8 @@ public class Conexion {
 				id = rs.getString("idUsuario");
 			}
 		} catch (SQLException e) {
-			System.err.println("no se hace la consulta");
+			JOptionPane.showMessageDialog(null, "No se hae la consulta");
+			//System.err.println("no se hace la consulta");
 		}
 		return id;
 	}
