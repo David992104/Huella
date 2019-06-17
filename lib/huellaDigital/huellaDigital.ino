@@ -41,8 +41,9 @@ void loop() {
     int input = readnumber();
     if (input == 1){
         while(getFingerprintIDez() == -1);
-        servoOpen();
         delay(5000);
+        servoOpen();
+        delay(1000);
         servoClose();
         input = 0;
     }
@@ -59,7 +60,7 @@ void loop() {
 }
 
 void servoOpen(){
-   servo1.write(160);
+   servo1.write(100);
    delay(700);
     Serial.println("Servo abierto");
 }
