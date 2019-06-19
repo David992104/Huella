@@ -1,5 +1,6 @@
 package com.tesji.huella.login;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -57,7 +58,7 @@ public class LoginController implements Initializable{
 	
 	
 	@FXML
-	void btnOnAction(ActionEvent event) {
+	void btnOnAction(ActionEvent event) throws IOException {
 		lm.busqueda();
 	}
 	

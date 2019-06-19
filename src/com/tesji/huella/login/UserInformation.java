@@ -1,8 +1,5 @@
 package com.tesji.huella.login;
 
-import javax.swing.ImageIcon;
-
-import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -28,6 +25,7 @@ public class UserInformation {
 		ButtonType bt = new ButtonType("Aceptar", ButtonData.OK_DONE);
 		dialog.getDialogPane().getButtonTypes().add(bt);
 		dialog.showAndWait();
+
 	}
 	
 

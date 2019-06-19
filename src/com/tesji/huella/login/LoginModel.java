@@ -1,7 +1,12 @@
 package com.tesji.huella.login;
 
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,7 +44,7 @@ public class LoginModel {
 	private ImageIcon imgico;
 	private boolean pulso = true;
 
-	public void busqueda() {
+	public void busqueda() throws IOException {
 		con.busqueda(1);
 		boolean cona = true;
 		do {
@@ -65,8 +70,10 @@ public class LoginModel {
 			}
 			sacarImagen();
 			
-			JOptionPane.showMessageDialog(null, "Hola" + nombre + apellidos + "\nMatricula " + matricula,
-					"Bienvenido", JOptionPane.INFORMATION_MESSAGE, (Icon) imgico);
+			new UserInformation().information();
+			
+			//JOptionPane.showMessageDialog(null, "Hola" + nombre + apellidos + "\nMatricula " + matricula,
+				//	"Bienvenido", JOptionPane.INFORMATION_MESSAGE, (Icon) imgico);
 			
 			//con.manterActivo();
 		} catch (SQLException e) {
@@ -74,7 +81,7 @@ public class LoginModel {
 		}
 	}
 	
-	public void sacarImagen() {
+	public void sacarImagen() throws SQLException, IOException {
 		/*byte[] imagen = null;
 		try {
 			if(rs.next()) {
@@ -84,30 +91,30 @@ public class LoginModel {
 				imgico = new ImageIcon(img);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
 		
-		byte byteImage[] = null;
-
-	    // obtener la columna imagen, luego el arreglo de bytes 
-	    Blob blob = null;
-		try {
-			blob = rs.getBlob("imagen");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	    try {
-			byteImage = blob.getBytes(1, (int) blob.length());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	    // crear el Image y mostrarlo en el ImageView
-	    Image img = new Image(new ByteArrayInputStream(byteImage));
-	    //imageView = new ImageView(img);
+		/*byte[] imagen = rs.getBytes("fotografia");
+		ByteArrayInputStream bis = new ByteArrayInputStream(imagen);
+		Iterator readers = ImageIO.getImageReadersByFormatName("jpeg");
+		ImageReader reader =(ImageReader)readers.next();
+		Object source = bis;
+		ImageInputStream iis = ImageIO.createImageInputStream(source);
+		reader.setInput(iis, true);
+		ImageReadParam param = reader.getDefaultReadParam();
+		//param.setSourceSubsampling(4,4, 0, 0 );
+		return reader.read(0, param);*/
+		
+		InputStream is = rs.getBinaryStream("fotografia");
+		OutputStream os = new FileOutputStream(new File("photo.jpg"));
+		byte[] content = new byte[1024];
+		int size=0;
+		while((size = is.read(content)) != 1)
+				os.write(content, 0, size);
+		os.close();
+		is.close();
+		img = new Image("file:photo.jpg", 250, 250, true, true);
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								
 	}
 
 	public void cerrarCon() {
