@@ -27,11 +27,7 @@ public class ConexionArduino {
 					}
 				}
 			} catch (SerialPortException | ArduinoException ex) {
-<<<<<<< HEAD
 				System.out.println("Error conexion con arduino " + ex);
-=======
-				System.out.println("Error uno \n " + ex);
->>>>>>> 29f183f8dd6927e7e4b7f942100711ba9427877d
 			}
 		}
 	};
@@ -49,6 +45,14 @@ public class ConexionArduino {
 			ino.killArduinoConnection();
 		} catch (ArduinoException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void manterActivo() {
+		try {
+			ino.sendByte(0);
+		} catch (ArduinoException | SerialPortException e) {
 			e.printStackTrace();
 		}
 	}

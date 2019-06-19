@@ -109,14 +109,8 @@ public class Conexion {
 		String consulta = "";
 		ResultSet usuario = null;
 		try {
-<<<<<<< HEAD
-			consulta = "select * from usuario where id=" + idUser + ";";
-			
-			sentencia.executeQuery(consulta);
-=======
 			consulta = "select * from usuario where idUsuario=" + idUser + ";";
 			usuario = sentencia.executeQuery(consulta);
->>>>>>> 29f183f8dd6927e7e4b7f942100711ba9427877d
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

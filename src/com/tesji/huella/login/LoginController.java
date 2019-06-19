@@ -17,7 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class LoginController implements Initializable {
+public class LoginController implements Initializable{
 	@FXML
 	private JFXButton btnSalir;
 	@FXML
@@ -26,10 +26,18 @@ public class LoginController implements Initializable {
 	private Button btn;
 
 	LoginModel lm = new LoginModel();
-
+	/*AnimationTimer user = new AnimationTimer() {
+		@Override
+		public void handle(long now) {
+			lm.busqueda();
+		}
+	};*/
+	
 	@FXML
 	void btnNuevoOnAction(ActionEvent event) {
 		try {
+			lm.setPulso(false);
+			//user.stop();
 			lm.cerrarCon();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tesji/huella/registro/RegistroView.fxml"));
 			BorderPane root1 = loader.load();
@@ -41,12 +49,11 @@ public class LoginController implements Initializable {
 			
 			Stage este = (Stage) btnNuevo.getScene().getWindow();
 			este.close();
-			lm.setPulso(false);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	
 	@FXML
@@ -63,13 +70,9 @@ public class LoginController implements Initializable {
 		
 	}
 
-
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		//lm.busqueda();
+		//user.start();
 	}
-
-
 
 }

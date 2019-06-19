@@ -57,12 +57,6 @@ public class RegistroController {
 	}
 
 	@FXML
-<<<<<<< HEAD
-	void btnCancelarOnAction(ActionEvent event) {
-		Stage stage = (Stage) btnCancelar.getScene().getWindow();
-		stage.close();
-		
-=======
 	void btnCancelarOnAction(ActionEvent event) throws IOException {
 		con.CerrarConexion();
 		Stage st = (Stage) btnCancelar.getScene().getWindow();
@@ -75,7 +69,6 @@ public class RegistroController {
 		stage.setTitle("Nuevo usuario 3041");
 		stage.show();
 		stage.centerOnScreen();
->>>>>>> 29f183f8dd6927e7e4b7f942100711ba9427877d
 	}
 
 	@FXML
@@ -88,11 +81,20 @@ public class RegistroController {
 					if (txtApDos.getText().trim().length()!=0) {
 						if (txtMatricula.getText().trim().length()!=0) {
 							if (txtMatricula.getText().trim().length()<=10) {
+								
 								crear.crear(txtNombre.getText().trim(), txtApUno.getText().trim(), txtApDos.getText().trim(),
 										txtMatricula.getText().trim(), registroM.convertir());
 								Stage stage = (Stage) btnGuardar.getScene().getWindow();
 								stage.close();
 								con.CerrarConexion();
+								
+								FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tesji/huella/login/LoginView.fxml"));
+								BorderPane root1 = loader.load();
+								Stage st = new Stage();
+								st.setScene(new Scene(root1, 704, 443));
+								st.setTitle("Nuevo usuario 3041");
+								st.show();
+								st.centerOnScreen();
 							}else 
 								JOptionPane.showMessageDialog(null, "Coloca una matricula menor igual de 10 digitos", "Matricula", JOptionPane.ERROR_MESSAGE);
 						}else 
@@ -107,23 +109,12 @@ public class RegistroController {
 			System.out.println("No se pudo hacer el registro");
 		}
 	}
-<<<<<<< HEAD
 
 	@FXML
 	void btnRegistroOnAction(ActionEvent event) {
 		con.registroHuella();
 	}
 
-=======
-	
-	  @FXML
-	    void btnRegistroOnAction(ActionEvent event) {
-		 
-			con.registroHuella();
-	  
-	    }
-	
->>>>>>> 29f183f8dd6927e7e4b7f942100711ba9427877d
 	@FXML
 	void imgHuellaOnmouseClicked(ActionEvent event) {
 

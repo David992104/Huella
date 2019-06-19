@@ -3,6 +3,7 @@ package com.tesji.huella;
 import javax.swing.JOptionPane;
 
 import com.tesji.huella.conexion.Conexion;
+import com.tesji.huella.login.LoginController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,8 @@ public class Main extends Application {
 		byte resp;
 		try {
 			Conexion con = new Conexion();
+			//LoginController lc = new LoginController();
+			//((LoginController) lc).start();
 			do {
 				resp = 1;
 				if (con.prepararBaseDatos()) {
